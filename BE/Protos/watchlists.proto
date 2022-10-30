@@ -1,0 +1,29 @@
+syntax = "proto3";
+package watchlists;
+
+service Watchlists {
+  rpc Get (GetRequest) returns (GetReply);
+}
+
+message GetRequest {
+}
+
+message GetReply {
+  repeated Watchlist watchlists = 1;
+}
+
+message Watchlist {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  repeated Movie movies = 4;
+}
+
+message Movie {
+  int32 id = 1;
+  string imdbId = 2;
+  string name = 3;
+  string imgUrl = 4;
+  int32 year = 5;
+  string description = 6;
+}
