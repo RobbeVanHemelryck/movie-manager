@@ -13,7 +13,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddSingleton((_) => 
 {
     var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-    return GrpcChannel.ForAddress("https://localhost:7031", new GrpcChannelOptions { HttpClient = httpClient }); 
+    return GrpcChannel.ForAddress("http://localhost:7031", new GrpcChannelOptions { HttpClient = httpClient }); 
 });
 
 builder.Services.AddSingleton(services => new Movies.Movies.MoviesClient(services.GetRequiredService<GrpcChannel>()));
